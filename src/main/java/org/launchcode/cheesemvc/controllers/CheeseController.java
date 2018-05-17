@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 @Controller
 @RequestMapping("cheese") // every handler must be preced by /cheese
 public class CheeseController {
-    static ArrayList<String> cheeses = new ArrayList<>();
+    static HashMap<String, String> cheeses = new HashMap<>();
     // Request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model){ //model is used to pass data to the template or "view"
@@ -32,8 +33,8 @@ public class CheeseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddCheeseForm(@RequestParam String cheeseName) {// spring will look for a param from add.html called cheeseName
-        cheeses.add(cheeseName);
+    public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDesc) {// spring will look for a param from add.html called cheeseName
+        cheeses.put(cheeseName, cheeseDesc);
         // Redirect to /cheese
         return "redirect:";
     }
