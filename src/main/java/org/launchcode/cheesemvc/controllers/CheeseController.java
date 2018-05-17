@@ -21,7 +21,7 @@ public class CheeseController {
     public String index(Model model){ //model is used to pass data to the template or "view"
 
 
-        model.addAttribute("cheeses",cheeses); //this one passes an object cheeses(the one on the right)
+        model.addAttribute("cheeses",cheeses); //this one passes an object cheeses(the one on the left)
         model.addAttribute("title","My Cheeses"); //look on index ${title} links to title here it passes a string
         return "cheese/index"; // corresponds to the index.html template in /cheese
     }
@@ -38,7 +38,15 @@ public class CheeseController {
         // Redirect to /cheese
         return "redirect:";
     }
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String removeCheese(@RequestParam String cheeseName, @RequestParam String cheeseDesc){
+        ArrayList<String>cheese = new ArrayList<>();
+        cheeses.remove(cheeseName, cheeseDesc);
+        return "redirect:";
+    }
+
 }
+
 
 
 

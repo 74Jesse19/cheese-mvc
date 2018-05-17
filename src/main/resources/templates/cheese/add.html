@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head th:replace="fragments :: head"></head>
-<body>
-<h1 th:text="${title}">Default Title</h1>
-<nav th:replace="fragments :: navigation"></nav>
+    <body>
+        <h1 th:text="${title}">Default Title</h1>
+            <nav th:replace="fragments :: navigation"></nav>
 
-<form method = "post"> <!--/* dont have to use action attribute because default will go to the route where the form is displayed */-->
-    Cheese<input type="text" name="cheeseName" />
-    Description<input type="text" name="cheeseDesc"/>
-<input type="submit" value="Add Cheese"/>
-</form>
-</body>
+            <form method = "post"> <!--/* dont have to use action attribute because default will go to the route where the form is displayed */-->
+                Cheese      <input type="text" name="cheeseName" />
+                Description <input type="text" name="cheeseDesc"/>
+                            <input type="submit" value="Add Cheese"/>
+        </form>
+
+    </body>
 </html>

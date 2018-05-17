@@ -8,15 +8,22 @@
     <h1 th:text="${title}"></h1>
     <nav th:replace="fragments :: navigation"></nav>
 
-    <p th:unless="${cheeses} and ${cheeses.size()}" > no chesse =(</p>
+    <p th:unless="${cheeses} and ${cheeses.size()}" > no cheese =(</p>
     <!--/* this is going to loop over arraylist to display cheeses in the list
     it reads like this: for each cheese in cheeses repeat the current element which is an <li> tag */-->
 
 
-<tr th:each="cheese : ${cheeses}">
-    <td  th:text="${cheese.key}">Key</td>
-    <td  th:text="${cheese.value}">Value</td><br>
-</tr>
+<dl th:each="cheese : ${cheeses}">
+
+    <dt  th:text="${cheese.key}">Key</dt>
+    <dd  th:text="${cheese.value}">Value</dd>
+
+    <form>
+        <input type="checkbox" name="cheese"/>
+        <input type="submit" method="post">
+    </form>
+
+</dl>
 
 
 
