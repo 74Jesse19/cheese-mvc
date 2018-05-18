@@ -49,7 +49,7 @@ public class CheeseController {
     }
     // request path cheese/remove
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String cheeseremove(@RequestParam ArrayList<String> cheese){
+    public String cheeseRemove(@RequestParam ArrayList<String> cheese){
 
             for (String c : cheese) {
                 cheeses.remove(c);
