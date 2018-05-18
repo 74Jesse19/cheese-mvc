@@ -40,14 +40,14 @@ public class CheeseController {
     }
 
 
-
+    // request path cheese/remove
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String removeShowForm(Model model) {
         model.addAttribute("title", "Remove Cheese");
         model.addAttribute("cheeses", cheeses);
         return "cheese/remove";
     }
-        // request path cheese/remove
+    // request path cheese/remove
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String cheeseremove(@RequestParam ArrayList<String> cheese){
 

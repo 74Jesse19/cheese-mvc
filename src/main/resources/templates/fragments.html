@@ -5,14 +5,17 @@
     <title th:text="${title}">My Cheeses</title>
 
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
 </head>
 <body>
 
 <nav th:fragment="navigation">
-    <a href="/cheese">List of Cheeses </a>
-    <a href="/cheese/add">Add Cheese </a>
-    <a href="/cheese/remove">Remove Cheeses </a>
+    <ul>
+        <li><a href="/cheese">List of Cheeses </a></li>
+        <li><a href="/cheese/add">Add Cheese </a></li>
+        <li><a href="/cheese/remove">Remove Cheeses </a></li>
+    </ul><br>
 </nav>
 
 </body>
