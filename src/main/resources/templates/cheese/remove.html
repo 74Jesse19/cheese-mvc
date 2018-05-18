@@ -6,9 +6,17 @@
     <title></title>
 </head>
     <body>
-        <form>
-            <input type="checkbox" name="cheese"/>
-            <input type="submit" method="post">
+
+
+        <form method="post">
+            <div th:each="cheese : ${cheeses}">
+            <input type="checkbox" name="cheese" th:value="${cheese.key}"/>
+            <label th:text="${cheese.key}"></label>
+
+            </div>
+            <input type="submit" method="post" value="Remove"/>
         </form>
     </body>
 </html>
+
+
