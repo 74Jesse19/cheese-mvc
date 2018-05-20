@@ -1,7 +1,8 @@
 package org.launchcode.cheesemvc.controllers;
 
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+
+import org.launchcode.cheesemvc.models.Cheese;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +14,16 @@ import java.util.HashMap;
 
 
 @Controller
-@RequestMapping("cheese") // every handler must be preced by /cheese
+@RequestMapping("cheese") // every handler must be precede by /cheese
 public class CheeseController {
-    static HashMap<String, String> cheeses = new HashMap<>();
+    //static HashMap<String, String> cheeses = new HashMap<>();
+
     // Request path: /cheese
     @RequestMapping(value = "")
     public String index(Model model){ //model is used to pass data to the template or "view"
 
 
-        model.addAttribute("cheeses",cheeses); //this one passes an object cheeses(the one on the left)
+        model.addAttribute("cheeses",Cheese.getCheeses()); //this one passes an object cheeses(the one on the left)
         model.addAttribute("title","My Cheeses"); //look on index ${title} links to title here it passes a string
         return "cheese/index"; // corresponds to the index.html template in /cheese
     }
@@ -34,7 +36,8 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDesc) {// spring will look for a param from add.html called cheeseName
-        cheeses.put(cheeseName, cheeseDesc);
+            Cheese.setCheeses(cheeseName, cheeseDesc);
+
         // Redirect to /cheese
         return "redirect:";
     }
@@ -44,7 +47,7 @@ public class CheeseController {
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String removeShowForm(Model model) {
         model.addAttribute("title", "Remove Cheese");
-        model.addAttribute("cheeses", cheeses);
+        model.addAttribute("cheeses", Cheese.getCheeses());
         return "cheese/remove";
     }
     // request path cheese/remove
@@ -52,7 +55,7 @@ public class CheeseController {
     public String cheeseRemove(@RequestParam ArrayList<String> cheese){
 
             for (String c : cheese) {
-                cheeses.remove(c);
+                Cheese.getCheeses().remove(c);
             }
             return "redirect:";
 
