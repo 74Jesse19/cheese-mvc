@@ -17,8 +17,9 @@
 
 <dl th:each="cheese : ${cheeses}">
 
-    <dt  th:text="${cheese.key}">Key</dt>
-    <dd  th:text="${cheese.value}">Value</dd>
+    <dt  th:text="${cheese.name}">Key</dt>
+    <dd  th:text="${cheese.description}">Value</dd>
+    <dd><a th:href="@{'/cheese/edit/' + ${cheese.cheeseId}}">edit</a></dd>
 
 </dl>
 

@@ -1,24 +1,44 @@
 package org.launchcode.cheesemvc.models;
 
-import java.util.HashMap;
-
 public class Cheese {
-    private static HashMap<String,String> cheeses = new HashMap<>();
+    private String name;
+    private String description;
+    private int cheeseId;
+    private static int nextId= 1;
 
-
-    public Cheese(HashMap<String,String> cheeses){
-        this.cheeses = cheeses;
+    public Cheese(String name, String description) {
+        this();
+        this.name = name;
+        this.description = description;
     }
 
-    public static HashMap getCheeses()
-    {
-        return cheeses;
+    public Cheese(){
+        cheeseId = nextId;
+        nextId++;
     }
 
-    public static void setCheeses(String aKey, String aValue)
-    {
-        cheeses.put(aKey, aValue);
+    public int getCheeseId() {
+        return cheeseId;
     }
 
+    public void setCheeseId(int cheeseId) {
+        this.cheeseId = cheeseId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
 
